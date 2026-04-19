@@ -7,7 +7,7 @@
         document.querySelectorAll('link[href^="/"], script[src^="/"]').forEach(el => {
           let attr = el.tagName === 'LINK' ? 'href' : 'src';
           let url = el.getAttribute(attr);
-          if (url && url.startsWith('/') && !url.startsWith('//') && !url.startsWith('http')) {
+          if (url && url.startsWith('/') && !url.startsWith('//') && !url.startsWith('http') && !url.startsWith(basePath)) {
             el.setAttribute(attr, basePath + url);
           }
         });
@@ -132,7 +132,7 @@
           let href = link.getAttribute('href');
           if (href && href.startsWith('/') && !href.startsWith('//') && 
               !href.startsWith('http') && !href.startsWith('mailto') && 
-              !href.startsWith('tel') && href !== basePath) {
+              !href.startsWith('tel') && href !== basePath && !href.startsWith(basePath)) {
             link.setAttribute('href', basePath + href);
           }
         });
@@ -140,7 +140,7 @@
         document.querySelectorAll('img[src], link[href^="/"], script[src^="/"]').forEach(el => {
           let attr = el.tagName === 'LINK' ? 'href' : (el.tagName === 'SCRIPT' ? 'src' : 'src');
           let src = el.getAttribute(attr);
-          if (src && src.startsWith('/') && !src.startsWith('//') && !src.startsWith('http')) {
+          if (src && src.startsWith('/') && !src.startsWith('//') && !src.startsWith('http') && !src.startsWith(basePath)) {
             el.setAttribute(attr, basePath + src);
           }
         });
