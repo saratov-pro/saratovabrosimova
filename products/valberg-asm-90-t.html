@@ -1,9 +1,12 @@
 <!DOCTYPE html><html lang="ru" dir="ltr"> <head><!-- Fix CSS and other head resources for GitHub Pages subdirectory --><script>
       window.__baseFixDone = false;
+      const basePath = '/saratovabrosimova';
+      
       function fixHeadResources() {
         if (window.__baseFixDone) return;
-        window.__baseFixDone = true;
-        const basePath = '/saratovabrosimova';
+        const allFixed = document.querySelectorAll('link[href^="/"], script[src^="/"]').length === 0;
+        if (allFixed) return;
+        
         document.querySelectorAll('link[href^="/"], script[src^="/"]').forEach(el => {
           let attr = el.tagName === 'LINK' ? 'href' : 'src';
           let url = el.getAttribute(attr);
@@ -11,8 +14,22 @@
             el.setAttribute(attr, basePath + url);
           }
         });
+        window.__baseFixDone = true;
       }
+      
+      // Fix existing resources immediately
       fixHeadResources();
+      
+      // Watch for new resources being added
+      const observer = new MutationObserver((mutations) => {
+        for (let mutation of mutations) {
+          if (mutation.addedNodes.length > 0) {
+            fixHeadResources();
+          }
+        }
+      });
+      
+      observer.observe(document.head, { childList: true });
     </script><!-- Charset и основные мета-теги --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0A2540"><meta name="description" content="Компактный офисный сейф с высокопрочной конструкцией"><meta name="keywords" content="VALBERG ASM-90 T, VALBERG, купить, SARPRO"><meta name="robots" content="index, follow"><!-- Language --><meta http-equiv="Accept-Language" content="ru_RU"><!-- Open Graph --><meta property="og:title" content="VALBERG ASM-90 T — купить в SARPRO"><meta property="og:description" content="Компактный офисный сейф с высокопрочной конструкцией"><meta property="og:image" content="/assets/images/products/valberg-asm-90-t.jpg"><meta property="og:url" content="https://saratov-pro.github.io/products/valberg-asm-90-t.html"><meta property="og:type" content="product"><meta property="og:site_name" content="SARPRO"><meta property="og:locale" content="ru_RU"><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="VALBERG ASM-90 T — купить в SARPRO"><meta name="twitter:description" content="Компактный офисный сейф с высокопрочной конструкцией"><meta name="twitter:image" content="/assets/images/products/valberg-asm-90-t.jpg"><!-- Canonical URL --><link rel="canonical" href="https://saratov-pro.github.io/products/valberg-asm-90-t.html"><!-- Favicon --><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/logos/favicon.svg" type="image/svg+xml"><!-- Preconnect для оптимизации --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="dns-prefetch" href="https://fonts.googleapis.com"><!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="SARPRO - новости" href="/rss.xml"><!-- Sitemap --><link rel="sitemap" type="application/xml" href="/sitemap.xml"><!-- Robots --><link rel="robots" href="/robots.txt"><!-- Manifest для PWA (опционально) --><link rel="manifest" href="/manifest.json"><!-- Title --><title>VALBERG ASM-90 T — купить в SARPRO</title><!-- Schema.org JSON-LD --><script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"ООО \"Сарпро\"","alternateName":"SARPRO","description":"Официальный поставщик сейфов, пломб и оборудования для безопасности","url":"https://saratov-pro.github.io/saratovabrosimova","logo":"https://saratov-pro.github.io/saratovabrosimova/assets/logos/logo.svg","image":"https://saratov-pro.github.io/saratovabrosimova/assets/images/hero.jpg","telephone":"+7-905-386-0870","email":"info@sarpro.ru","address":{"@type":"PostalAddress","streetAddress":"проспект 50 лет Октября, д. 24/26","addressLocality":"Саратов","addressRegion":"Саратовская область","postalCode":"410012","addressCountry":"RU"},"areaServed":"RU","priceRange":"$$","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"100"},"sameAs":["https://vk.com/sarpro","https://t.me/sarpro_oficial"]}</script><!-- Google Analytics (если есть) --><!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
